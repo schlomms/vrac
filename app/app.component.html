@@ -1,0 +1,44 @@
+<app-header></app-header>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-5 d-flex justify-content-center align-items-center">
+            <div class="row d-flex flex-column justify-content-center align-items-center">
+                <table class="table">
+                    <tr>
+                        <th>Nom</th>
+                        <th>Score</th>
+                        <th>Nombre de partie</th>
+                        <th>Classement</th>
+                    </tr>
+                    <tr *ngFor="let player of tableLeader">
+                        <td>{{player.pseudo}}</td>
+                        <td>{{player.score}}</td>
+                        <td>{{player.numberGame}}</td>
+                        <td>{{tableLeader.indexOf(player) + 1}}</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <app-lancement-jeu *ngIf="!playing" (transfert)="createPlayer($event)" [ngClass]="{'col-md-7' : !playing}">
+        </app-lancement-jeu>
+
+        <div *ngIf="playing" [ngClass]="{'col-md-7' : playing}" class="d-flex flex-column align-items-end">
+            <div class="form-inline">
+                <label for="nombre">Trouvez le Mysterieux nombre</label>
+                <input id="nombre" class="form-control mx-2" [(ngModel)]="valueEssai" type="number">
+                <button class="btn btn-info" (click)=findNumber()>Valider</button>
+            </div>
+            <p>Le nombre que vous avez choisis est {{valueEssai}}</p>
+            <p> {{message}}. </p>
+            <div class="d-flex my-1">
+                <i *ngFor="let number of tableCount" class="fas red fa-heart"></i>
+            </div>
+            <div class="d-flex">
+                <button class="btn btn-warning mr-2" (click)=newGame()>Nouveau joueur</button>
+                <button class="btn btn-warning" (click)=setPseudo()>Rejouer</button>
+            </div>
+
+        </div>
+    </div>
+</div>

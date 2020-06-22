@@ -1,0 +1,38 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-item>
+            <ion-back-button text="back" icon="" class="positive"></ion-back-button>
+            <ion-title>Formulaire</ion-title>
+        </ion-item>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <form #f="ngForm" (ngSubmit)="onSubmit(f)">
+        <ion-item>
+            <ion-label>Nom du Jeu</ion-label>
+            <ion-input type="text" ngModel name="name" required></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label>Type de Jeu</ion-label>
+            <ion-input type="text" ngModel name="type" required></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label>Image</ion-label>
+            <ion-input type="text" ngModel name="url" required></ion-input>
+        </ion-item>
+        <ion-button type="submit">Ajouter</ion-button>
+    </form>
+
+    <ion-title>Liste des Jeux</ion-title>
+    <ion-list>
+        <ion-item *ngFor="let game of games">
+            <ion-label>{{game.name}}</ion-label>
+        </ion-item>
+    </ion-list>
+
+
+
+
+
+</ion-content>

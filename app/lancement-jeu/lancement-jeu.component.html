@@ -1,0 +1,10 @@
+<div class="d-flex flex-column align-items-end justify-content-center">
+    <div class="form-inline">
+        <label for="pseudo">Entrez votre pseudo</label>
+        <input class="form-control mx-2" id="pseudo" type="text" placeholder="pseudo" [(ngModel)]="valuePseudo">
+        <button class="btn btn-info" (click)="setPseudo()">Valider</button>
+    </div>
+    <div *ngIf="pseudoVide" class="mt-5">
+        Rentre un pseudo Bordel !
+    </div>
+</div>
